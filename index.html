@@ -3,217 +3,429 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title>Portfolio - Business Management</title>
+  <title>Emily Johnson - Business Management Freelancer</title>
   <style>
-    /* Reset and base */
+    /* Import fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans:wght@400;600&display=swap');
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+    html {
+      scroll-behavior: smooth;
+    }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #fffafa;
+      font-family: 'Open Sans', sans-serif;
+      background: #fff9f8;
       color: #3a0b0b;
       max-width: 350px;
       margin: 0 auto;
-      padding: 20px 15px;
-      line-height: 1.5;
+      padding: 0 15px 50px;
+      line-height: 1.6;
+      overflow-x: hidden;
       user-select: none;
     }
+
+    /* Header */
     header {
-      text-align: center;
-      padding-bottom: 20px;
-      border-bottom: 2px solid #7a1414;
-      margin-bottom: 20px;
+      background: #7a1414;
+      padding: 18px 0;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 3px 8px rgba(122,20,20,0.75);
+      user-select: text;
+    }
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 320px;
+      margin: 0 auto;
+      padding: 0 10px;
     }
     header h1 {
-      font-size: 2.4rem;
-      font-weight: 700;
-      color: #7a1414; /* burgundy */
-      margin-bottom: 4px;
-      font-family: 'Georgia', serif;
+      font-family: 'Merriweather', serif;
+      color: #f9f1f1;
+      font-size: 1.8rem;
+      letter-spacing: 0.1em;
     }
-    header p.title {
-      font-size: 1.1rem;
+    nav a {
+      color: #f9f1f1;
+      text-decoration: none;
       font-weight: 600;
-      color: #9e1c1c;
-      font-style: italic;
-      letter-spacing: 0.05em;
+      font-size: 0.85rem;
+      margin-left: 18px;
+      padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
+      user-select: text;
     }
+    nav a:hover,
+    nav a:focus {
+      border-bottom: 2px solid #f7d6d6;
+      color: #f7d6d6;
+      outline: none;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 280px;
+      background: linear-gradient(rgba(122,20,20,0.78), rgba(122,20,20,0.78)),
+                  url('https://images.unsplash.com/photo-1515165562835-c7c418780633?auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 25px 0;
+      box-shadow: 0 8px 15px rgba(122,20,20,0.3);
+      text-align: center;
+      color: #fff9f9;
+      font-family: 'Merriweather', serif;
+      font-size: 1.9rem;
+      user-select: text;
+    }
+
+    /* Sections common */
     section {
-      margin-bottom: 25px;
+      margin-bottom: 30px;
     }
-    h2 {
-      font-family: 'Georgia', serif;
-      font-size: 1.4rem;
+    section h2 {
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+      font-size: 1.5rem;
       color: #7a1414;
-      padding-bottom: 6px;
-      border-bottom: 2px solid #9e1c1c;
-      margin-bottom: 12px;
+      border-bottom: 3px solid #d47b7b;
+      padding-bottom: 7px;
+      margin-bottom: 18px;
+      user-select: text;
     }
+
     /* About */
     .about p {
       font-size: 1rem;
       color: #4b1b1b;
+      line-height: 1.56;
+      user-select: text;
     }
+
     /* Services */
-    .services-list {
-      list-style: none;
-      padding-left: 0;
+    .services {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
     }
-    .services-list li {
-      background-color: #7a1414;
-      color: white;
-      padding: 10px 15px;
-      margin-bottom: 12px;
-      border-radius: 6px;
+    .service-card {
+      background: #7a1414;
+      color: #f9f1f1;
+      border-radius: 10px;
+      padding: 18px 14px;
+      box-shadow: 0 4px 10px rgba(122,20,20,0.3);
       font-weight: 600;
-      box-shadow: 0 2px 5px rgba(122, 20, 20, 0.4);
-      transition: background-color 0.3s ease;
-    }
-    .services-list li:hover {
-      background-color: #9e1c1c;
+      font-size: 0.95rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
       cursor: default;
     }
+    .service-card:hover,
+    .service-card:focus {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(122,20,20,0.6);
+      outline: none;
+    }
+
     /* Skills */
-    .skills-list {
+    .skills {
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+      flex-direction: column;
+      gap: 14px;
     }
-    .skills-list span {
-      background-color: #9e1c1c;
+    .skill-bar {
+      background: #f1d4d4;
+      border-radius: 25px;
+      height: 22px;
+      overflow: hidden;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.1);
+      user-select: none;
+    }
+    .skill-fill {
+      height: 100%;
+      border-radius: 25px;
       color: white;
-      padding: 7px 14px;
-      border-radius: 20px;
       font-weight: 600;
+      text-align: right;
+      padding-right: 12px;
+      line-height: 22px;
+      letter-spacing: 0.03em;
+      box-shadow: 0 2px 6px rgba(122,20,20,0.7);
+      background: linear-gradient(90deg, #a12020 0%, #7a1414 100%);
+      width: 0%;
+      transition: width 1.5s ease-in-out;
+    }
+    .skill-label {
       font-size: 0.9rem;
-      box-shadow: 0 2px 6px rgba(158, 28, 28, 0.5);
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #5b0c0c;
+      user-select: text;
     }
-    /* Portfolio (Experience) */
-    .portfolio-list {
-      list-style: none;
-      padding-left: 0;
+
+    /* Portfolio */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
     }
-    .portfolio-list li {
-      border-left: 4px solid #7a1414;
-      padding-left: 12px;
-      margin-bottom: 16px;
+    .portfolio-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 14px rgba(122,20,20,0.2);
+      cursor: pointer;
+      background: #f7f1f1;
+      user-select: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      align-items: flex-end;
+      height: 140px;
+    }
+    .portfolio-item:hover,
+    .portfolio-item:focus {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 28px rgba(122,20,20,0.55);
+      outline: none;
+    }
+    .portfolio-image {
+      position: absolute;
+      inset: 0;
+      object-fit: cover;
+      filter: brightness(0.55);
+      transition: filter 0.3s ease;
+    }
+    .portfolio-item:hover .portfolio-image,
+    .portfolio-item:focus .portfolio-image {
+      filter: brightness(0.7);
+    }
+    .portfolio-info {
+      position: relative;
+      padding: 14px 16px;
+      color: #fff6f6;
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      z-index: 2;
+      user-select: text;
+      text-shadow:
+        2px 2px 8px rgba(0,0,0,0.6);
+      width: 100%;
+      background: linear-gradient(0deg, rgba(122,20,20,0.8) 0%, transparent 100%);
+      border-radius: 0 0 12px 12px;
+    }
+
+    /* Contact */
+    .contact-section {
+      text-align: center;
+      user-select: text;
+    }
+    .contact-links a {
+      display: inline-block;
+      margin: 0 8px;
+      padding: 10px 20px;
+      color: #7a1414;
+      background: #f7dede;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 30px;
+      box-shadow: 0 2px 8px rgba(122,20,20,0.25);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .contact-links a:hover,
+    .contact-links a:focus {
+      background: #7a1414;
+      color: #faf3f3;
+      outline: none;
+    }
+    .contact-email {
+      margin-top: 14px;
+      font-size: 1rem;
       color: #4b1b1b;
       user-select: text;
     }
-    .portfolio-list li strong {
-      display: block;
-      font-size: 1rem;
-      margin-bottom: 4px;
-      color: #7a1414;
-    }
-    /* Contact */
-    .contact-info {
-      font-size: 1rem;
-      color: #4b1b1b;
-    }
-    .contact-info a {
-      color: #7a1414;
-      text-decoration: none;
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
       font-weight: 600;
+      color: #7a1414;
+      padding-bottom: 14px;
+      user-select: none;
     }
-    .contact-info a:hover,
-    .contact-info a:focus {
-      text-decoration: underline;
-      outline: none;
-    }
-    /* Responsive and mobile friendly */
+    /* Responsive */
     @media (max-width: 400px) {
-      body {
-        padding: 15px 12px;
-        max-width: 100%;
+      .services, .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+      header .container {
+        flex-direction: column;
+        gap: 8px;
       }
       header h1 {
-        font-size: 2rem;
+        font-size: 1.6rem;
       }
-      h2 {
-        font-size: 1.25rem;
+      section h2 {
+        font-size: 1.35rem;
       }
-      .services-list li {
-        font-size: 0.9rem;
-        padding: 8px 12px;
+      .hero {
+        font-size: 1.6rem;
+        min-height: 220px;
       }
-      .skills-list span {
-        padding: 6px 12px;
-        font-size: 0.85rem;
-      }
-      .contact-info {
-        font-size: 0.95rem;
-      }
-    }
-    /* Anchor smooth scroll */
-    html {
-      scroll-behavior: smooth;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Emily Johnson</h1>
-    <p class="title">Business Management Freelancer</p>
+    <div class="container" role="banner">
+      <h1>Emily Johnson</h1>
+      <nav aria-label="Primary Navigation">
+        <a href="#about" tabindex="0">About</a>
+        <a href="#services" tabindex="0">Services</a>
+        <a href="#skills" tabindex="0">Skills</a>
+        <a href="#portfolio" tabindex="0">Portfolio</a>
+        <a href="#contact" tabindex="0">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <section class="about" id="about" aria-labelledby="about-title">
+  <section class="hero" aria-label="Hero section with tagline">
+    Your Business Management Partner
+  </section>
+
+  <section id="about" aria-labelledby="about-title">
     <h2 id="about-title">About Me</h2>
-    <p>I am a dedicated business management student and freelancer with a passion for helping small businesses optimize operations and grow. I specialize in project management, market research, and strategic planning to drive success.</p>
+    <p>As a passionate business management freelancer and student, I help businesses grow through expert project management, strategic planning, and market insights. I am committed to delivering value and efficient results.</p>
   </section>
 
-  <section class="services" id="services" aria-labelledby="services-title">
-    <h2 id="services-title">Freelancing Services</h2>
-    <ul class="services-list">
-      <li>Project Management & Coordination</li>
-      <li>Market Research & Competitor Analysis</li>
-      <li>Business Plan Development</li>
-      <li>Financial Planning Assistance</li>
-      <li>Customer Relationship Management (CRM) Strategy</li>
-      <li>Process & Efficiency Improvement</li>
-    </ul>
-  </section>
-
-  <section class="skills" id="skills" aria-labelledby="skills-title">
-    <h2 id="skills-title">Skills & Talents</h2>
-    <div class="skills-list" role="list">
-      <span role="listitem">Strategic Planning</span>
-      <span role="listitem">Time Management</span>
-      <span role="listitem">Communication</span>
-      <span role="listitem">Data Analysis</span>
-      <span role="listitem">Financial Forecasting</span>
-      <span role="listitem">Team Leadership</span>
-      <span role="listitem">Problem Solving</span>
+  <section id="services" aria-labelledby="services-title">
+    <h2 id="services-title">Services</h2>
+    <div class="services">
+      <div class="service-card" tabindex="0">Project Management & Coordination</div>
+      <div class="service-card" tabindex="0">Market Research & Competitor Analysis</div>
+      <div class="service-card" tabindex="0">Business Plan Development</div>
+      <div class="service-card" tabindex="0">Financial Planning Assistance</div>
+      <div class="service-card" tabindex="0">CRM Strategy & Implementation</div>
+      <div class="service-card" tabindex="0">Process & Efficiency Improvement</div>
     </div>
   </section>
 
-  <section class="portfolio" id="portfolio" aria-labelledby="portfolio-title">
-    <h2 id="portfolio-title">Portfolio & Experience</h2>
-    <ul class="portfolio-list">
-      <li>
-        <strong>Market Entry Strategy for Local Startup</strong>
-        Developed a comprehensive market entry business plan enabling a small startup to successfully launch its product in a competitive locale through careful analysis and strategy formulation.
-      </li>
-      <li>
-        <strong>Project Lead for Community Outreach Event</strong>
-        Managed a team of 5 volunteers and coordinated logistics, marketing, and stakeholder communications to deliver an event serving 300+ attendees.
-      </li>
-      <li>
-        <strong>Customer Segmentation & CRM Optimization</strong>
-        Provided customer data analysis and CRM recommendations for a mid-sized retail client that enhanced sales conversion rates by 15%.
-      </li>
-    </ul>
+  <section id="skills" aria-labelledby="skills-title">
+    <h2 id="skills-title">Skills</h2>
+    <div class="skills" role="list">
+      <div>
+        <div class="skill-label">Strategic Planning</div>
+        <div class="skill-bar" aria-label="Skill level for Strategic Planning">
+          <div class="skill-fill" style="width: 85%;">85%</div>
+        </div>
+      </div>
+      <div>
+        <div class="skill-label">Time Management</div>
+        <div class="skill-bar" aria-label="Skill level for Time Management">
+          <div class="skill-fill" style="width: 90%;">90%</div>
+        </div>
+      </div>
+      <div>
+        <div class="skill-label">Communication</div>
+        <div class="skill-bar" aria-label="Skill level for Communication">
+          <div class="skill-fill" style="width: 80%;">80%</div>
+        </div>
+      </div>
+      <div>
+        <div class="skill-label">Data Analysis</div>
+        <div class="skill-bar" aria-label="Skill level for Data Analysis">
+          <div class="skill-fill" style="width: 75%;">75%</div>
+        </div>
+      </div>
+      <div>
+        <div class="skill-label">Financial Forecasting</div>
+        <div class="skill-bar" aria-label="Skill level for Financial Forecasting">
+          <div class="skill-fill" style="width: 70%;">70%</div>
+        </div>
+      </div>
+      <div>
+        <div class="skill-label">Team Leadership</div>
+        <div class="skill-bar" aria-label="Skill level for Team Leadership">
+          <div class="skill-fill" style="width: 85%;">85%</div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="contact" id="contact" aria-labelledby="contact-title">
-    <h2 id="contact-title">Contact Me</h2>
-    <p class="contact-info">Email: <a href="mailto:emily.johnson@example.com">emily.johnson@example.com</a></p>
-    <p class="contact-info">LinkedIn: <a href="https://linkedin.com/in/emily-johnson" target="_blank" rel="noopener noreferrer">linkedin.com/in/emily-johnson</a></p>
-    <p class="contact-info">Phone: <a href="tel:+1234567890">+1 234 567 890</a></p>
+  <section id="portfolio" aria-labelledby="portfolio-title">
+    <h2 id="portfolio-title">Portfolio</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-item" tabindex="0" aria-label="Market Entry Strategy for Local Startup">
+        <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=400&q=80" alt="Business meeting" class="portfolio-image" />
+        <div class="portfolio-info">Market Entry Strategy for Local Startup</div>
+      </div>
+      <div class="portfolio-item" tabindex="0" aria-label="Project Lead for Community Outreach Event">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" alt="Community event" class="portfolio-image" />
+        <div class="portfolio-info">Project Lead for Community Outreach Event</div>
+      </div>
+      <div class="portfolio-item" tabindex="0" aria-label="Customer Segmentation & CRM Optimization">
+        <img src="https://images.unsplash.com/photo-1560264418-c0fdbb1b0be8?auto=format&fit=crop&w=400&q=80" alt="Data analysis chart" class="portfolio-image" />
+        <div class="portfolio-info">Customer Segmentation & CRM Optimization</div>
+      </div>
+      <div class="portfolio-item" tabindex="0" aria-label="Business Plan Development">
+        <img src="https://images.unsplash.com/photo-1555371366-0dd733c1a15c?auto=format&fit=crop&w=400&q=80" alt="Business plan work" class="portfolio-image" />
+        <div class="portfolio-info">Business Plan Development</div>
+      </div>
+    </div>
   </section>
+
+  <section id="contact" aria-labelledby="contact-title" class="contact-section">
+    <h2 id="contact-title">Contact</h2>
+    <div class="contact-links">
+      <a href="mailto:emily.johnson@example.com" aria-label="Email Emily Johnson">Email</a>
+      <a href="https://linkedin.com/in/emily-johnson" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile of Emily Johnson">LinkedIn</a>
+      <a href="tel:+1234567890" aria-label="Phone number to call Emily Johnson">Call</a>
+    </div>
+    <p class="contact-email">Or email me directly: <a href="mailto:emily.johnson@example.com">emily.johnson@example.com</a></p>
+  </section>
+
+  <footer>
+    &copy; 2024 Emily Johnson. All rights reserved.
+  </footer>
+
+  <script>
+    // Animate skill bars on scroll into view
+    function isInViewport(element) {
+      const rect = element.getBoundingClientRect();
+      return (
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.bottom >= 0
+      );
+    }
+    function animateSkills() {
+      const skillFills = document.querySelectorAll('.skill-fill');
+      skillFills.forEach(fill => {
+        if (isInViewport(fill) && fill.style.width === '0%') {
+          const width = fill.getAttribute('style').match(/width:\s*(\d+)%/);
+          if (width) {
+            // Trigger the width animation by resetting width to 0% first
+            fill.style.width = '0';
+            setTimeout(() => {
+              fill.style.width = width[1] + '%';
+            }, 50);
+          }
+        }
+      });
+    }
+    window.addEventListener('scroll', animateSkills);
+    window.addEventListener('load', animateSkills);
+  </script>
 </body>
 </html>
 
